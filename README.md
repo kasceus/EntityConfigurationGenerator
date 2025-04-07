@@ -1,11 +1,11 @@
 # EntityConfigurationGenerator
 
 ## Purpose
-This project is intended to create extensibulity to allow rapid creation of configuration files for your data models.
+This project is intended to create extensibility to allow rapid creation of configuration files for your data models.
 This extension works on a single file or a folder.
 
 ## Installing
-Download, clean, and rebuild tghe project to create the vsix installer. 
+Download, clean, and rebuild the project to create the vsix installer. 
 Go to the project/bin/{debug/release} folder and double click the .vsix file to trigger the install
 
 ## Configuring
@@ -39,7 +39,7 @@ Data/
 
 # File Generation Template
 The extension will create a templated file depending on the settings of the extension. 
-If use partials is false, then {usingEntityNamespace} will be the original namespace from the orifginal class - 
+If use partials is false, then {usingEntityNamespace} will be the original namespace from the original class - 
 otherwise this will be an empty string since the namespace scope does not change for partial classes.
 
 ```cs
@@ -56,9 +56,9 @@ namespace {fileNamespace}
 	}
 };
 ```
-If partials are used then newclassname = className, otherwise, newClassName = classNameConfiguration
+If partials are used then newClassName = className, otherwise, newClassName = {className}Configuration
 
 
 ## Future goals:
-Hopefully, one day i can have it scrape any fluent configuration already present within the immediate namespace and pull that out and put it 
+Hopefully, one day I can have it scrape any fluent configuration already present within the immediate namespace and pull that out and put it 
 in the generated files automatically.
