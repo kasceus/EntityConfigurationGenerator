@@ -1,6 +1,6 @@
 # EntityConfigurationGenerator
 
-##Purpose
+## Purpose
 This project is intended to create extensibulity to allow rapid creation of configuration files for your data models.
 This extension works on a single file or a folder.
 
