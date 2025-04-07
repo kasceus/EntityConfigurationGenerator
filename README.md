@@ -55,3 +55,8 @@ namespace {fileNamespace}
 };
 ```
 If partials are used then newclassname = className, otherwise, newClassName = classNameConfiguration
+
+
+## Future goals:
+Hopefully, one day i can have it scrape any fluent configuration already present within the immediate namespace and pull that out and put it 
+in the generated files automatically.
