@@ -10,6 +10,8 @@ Go to the project/bin/{debug/release} folder and double click the .vsix file to 
 
 ## Configuring
 There's only one parameter configurable for the extension - and that's to prefer partials or not. Standard boolean value. 
+Configure it here:
+Tools => Options => Entity Config Generator
 
 ### Generate As Partial = true
 This will set the extension to generate partial classes for the config classes and convert your original class into a partial.
