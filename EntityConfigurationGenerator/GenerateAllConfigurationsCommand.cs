@@ -35,16 +35,6 @@ namespace EntityConfigurationGenerator
         }
 
         /// <summary>
-        /// Command ID.
-        /// </summary>
-        public const int CommandId = 0x0101;
-
-        /// <summary>
-        /// Command menu group (command set GUID).
-        /// </summary>
-        public static readonly Guid CommandSet = new Guid("7fb0260a-1b80-4015-9025-7c9571af8c59");
-
-        /// <summary>
         /// VS Package that provides this command, not null.
         /// </summary>
         private readonly AsyncPackage _Package;
@@ -60,7 +50,7 @@ namespace EntityConfigurationGenerator
             this._Package = package ?? throw new ArgumentNullException(nameof(package));
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
-            var menuCommandID = new CommandID(CommandSet, CommandId);
+            var menuCommandID = new CommandID(Guids.CommandSet, Guids.CommandIds.GenerateAllConfigs);
             var menuItem = new MenuCommand(this.Execute, menuCommandID);
             commandService.AddCommand(menuItem);
         }

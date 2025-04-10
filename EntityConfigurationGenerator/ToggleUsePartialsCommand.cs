@@ -9,26 +9,33 @@ namespace EntityConfigurationGenerator
 {
     internal sealed class ToggleUsePartialsCommand
     {
-        public const int CommandId = 0x0102; // Unique ID for the command
-        public static readonly Guid CommandSet = new Guid("d309f791-903f-11d0-9efc-00a0c911004f"); // Replace with your actual GUID
 
-        private readonly AsyncPackage package;
+        private readonly AsyncPackage _Package;
 
         private ToggleUsePartialsCommand(AsyncPackage package, OleMenuCommandService commandService)
         {
-            this.package = package ?? throw new ArgumentNullException(nameof(package));
+            this._Package = package ?? throw new ArgumentNullException(nameof(package));
 
-            var menuCommandID = new CommandID(CommandSet, CommandId);
+            var menuCommandID = new CommandID(Guids.CommandSet, Guids.CommandIds.ToggleUsePartials);
 
-            var menuItem = new OleMenuCommand(Execute, menuCommandID);
-            menuItem.BeforeQueryStatus += UpdateCommandStatus; // new!
-            commandService.AddCommand(menuItem);
+
+            _ = Task.Run(async () =>
+            {
+
+                var menuItem = new OleMenuCommand(Execute, menuCommandID);
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(_Package.DisposalToken);
+                menuItem.BeforeQueryStatus += UpdateCommandStatus;
+                commandService.AddCommand(menuItem);
+                menuItem.Visible = true;
+            }); // new!
+
         }
         private void UpdateCommandStatus(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
+            System.Diagnostics.Debug.WriteLine("BeforeQueryStatus fired");
 
-            var settings = (EntityConfigOptionsPage)package.GetDialogPage(typeof(EntityConfigOptionsPage));
+            var settings = (EntityConfigOptionsPage)_Package.GetDialogPage(typeof(EntityConfigOptionsPage));
 
             if (sender is OleMenuCommand menuCommand)
             {
@@ -55,7 +62,7 @@ namespace EntityConfigurationGenerator
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            var settings = (EntityConfigOptionsPage)package.GetDialogPage(typeof(EntityConfigOptionsPage));
+            var settings = (EntityConfigOptionsPage)_Package.GetDialogPage(typeof(EntityConfigOptionsPage));
 
             settings.GenerateAsPartial = !settings.GenerateAsPartial;
             if (sender is OleMenuCommand menuCommand)
@@ -64,7 +71,7 @@ namespace EntityConfigurationGenerator
             }
 
             VsShellUtilities.ShowMessageBox(
-                package,
+                _Package,
                 $"Generate as Partial is now {(settings.GenerateAsPartial ? "ON" : "OFF")}.",
                 "Configuration Updated",
                 OLEMSGICON.OLEMSGICON_INFO,

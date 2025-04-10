@@ -13,6 +13,7 @@
             </Menu>
         </Menus>
         <Groups>
+            <!-- Group for the top-level menu -->
             <Group guid="guidGenerateSingleConfigurationCommandPackageCmdSet" id="MyExtensionsMenuGroup" priority="0x0100">
                 <Parent guid="guidGenerateSingleConfigurationCommandPackageCmdSet" id="MyTopLevelExtensionMenu" />
             </Group>
@@ -47,16 +48,26 @@
                 </Strings>
             </Button>
             <!-- Extensions menu: Toggle Partial Config Option -->
-            <Button guid="guidGenerateSingleConfigurationCommandPackageCmdSet" id="cmdidToggleUsePartials" priority="0x0100" type="Button">
+            <Button guid="guidGenerateSingleConfigurationCommandPackageCmdSet" id="cmdidToggleUsePartials" priority="0x0102" type="Button">
                 <Parent guid="guidGenerateSingleConfigurationCommandPackageCmdSet" id="MyExtensionsMenuGroup" />
                 <!-- Place it under the Extensions menu -->
                 <Icon guid="guidImages" id="bmpPic1" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>TextChanges</CommandFlag>
                 <Strings>
                     <ButtonText>Toggle Use Partials</ButtonText>
-                    <!-- Text displayed in the menu -->
                 </Strings>
             </Button>
-
+            <Button guid="guidGenerateSingleConfigurationCommandPackageCmdSet"
+                        id="cmdidDummyVisible"
+                        priority="0x0105"
+                        type="Button">
+                <Parent guid="guidGenerateSingleConfigurationCommandPackageCmdSet"
+                        id="MyExtensionsMenuGroup" />
+                <Strings>
+                    <ButtonText>Static Hello Button</ButtonText>
+                </Strings>
+            </Button>
         </Buttons>
 
 
@@ -71,8 +82,7 @@
             <Bitmap guid="guidImages1" href="Resources\GenerateAllConfigurationsCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
         </Bitmaps>
     </Commands>
-
-
+   
     <Symbols>
         <!-- This is the package guid. -->
         <GuidSymbol name="guidGenerateEntityConfigurationCommandPackage" value="{08cd4165-b5ac-4b54-b5cb-9baebef59972}" />
@@ -81,7 +91,8 @@
 
         </GuidSymbol>
         <!-- This is the guid used to group the menu commands together -->
-        <GuidSymbol name="guidGenerateSingleConfigurationCommandPackageCmdSet" value="{7fb0260a-1b80-4015-9025-7c9571af8c59}">
+        <GuidSymbol name="guidGenerateSingleConfigurationCommandPackageCmdSet"
+            value="{7fb0260a-1b80-4015-9025-7c9571af8c59}">
             <IDSymbol name="MyMenuGroup" value="0x1020" />
             <IDSymbol name="MyFolderMenuGroup" value="0x1021" />
             <IDSymbol name="cmdidGenerateSingleConfiguration" value="0x100" />
@@ -89,6 +100,7 @@
             <IDSymbol name="cmdidToggleUsePartials" value="0x0102"/>
             <IDSymbol name="MyExtensionsMenuGroup" value="0x1022" />
             <IDSymbol name="MyTopLevelExtensionMenu" value="0x3000" />
+            <IDSymbol name="cmdidDummyVisible" value="0x0105"/>
         </GuidSymbol>
 
         <GuidSymbol name="guidImages" value="{cfed288f-1b86-43da-8b4a-040432616ce1}">
