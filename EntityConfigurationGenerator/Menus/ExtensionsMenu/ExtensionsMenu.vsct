@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable">
+    <Extern href="stdidcmd.h" />
+    <Extern href="vsshlids.h" />
+
+    <Commands package="guidGenerateEntityConfigurationCommandPackage">
+        <Groups>
+            <Group guid="guidExtensionMenuCmdSet" id="TopExtensionGroup" priority="0x0100">
+                <Parent guid="VSMainMenu" id="Extensions" />
+            </Group>
+            <Group guid="guidExtensionMenuCmdSet" id="MyExtensionsMenuGroup" priority="0x0201">
+                <Parent guid="guidExtensionMenuCmdSet" id="MyTopLevelExtensionMenu" />
+            </Group>
+
+        </Groups>
+        <Menus>
+            <Menu guid="guidExtensionMenuCmdSet" id="MyTopLevelExtensionMenu" priority="0x0100" type="Menu">
+                <Parent guid="guidExtensionMenuCmdSet" id="TopExtensionGroup"/>
+                <Strings>
+                    <ButtonText>Entity Config Generator</ButtonText>
+                </Strings>
+            </Menu>
+        </Menus>
+
+        <Buttons>
+            <Button guid="guidExtensionMenuCmdSet" id="cmdidToggleUsePartials" priority="0x0010" type="Button">
+                <Parent guid="guidExtensionMenuCmdSet" id="MyExtensionsMenuGroup" />
+                <CommandFlag>TextChanges</CommandFlag>
+                <Strings>
+                    <ButtonText>Use Partials</ButtonText>
+                    <LocCanonicalName>.guidExtensionMenuCmdSet.cmdidToggleUsePartials</LocCanonicalName>
+                </Strings>
+            </Button>
+        </Buttons>
+    </Commands>
+    <Symbols>
+        <GuidSymbol name="guidGenerateEntityConfigurationCommandPackage" value="{08cd4165-b5ac-4b54-b5cb-9baebef59972}" />
+        <GuidSymbol name="guidExtensionMenuCmdSet" value="{33b9a065-3e45-4f15-8c28-cfb1303db805}">
+            <IDSymbol name="MyTopLevelExtensionMenu" value="0x0001" />
+            <IDSymbol name="MyExtensionsMenuGroup" value="0x0002" />
+            <IDSymbol name="cmdidToggleUsePartials" value="0x0012" />
+            <IDSymbol name="TopExtensionGroup" value="0x0100" />
+        </GuidSymbol>
+    </Symbols>
+</CommandTable>

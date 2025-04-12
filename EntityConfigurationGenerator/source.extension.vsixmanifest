@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" Version="2.0.0" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="EntityConfigurationGenerator.08cd4165-b5ac-4b54-b5cb-9baebef59972" Version="1.0.73" Language="en-US" Publisher="CharlesGraham" />
+    <Identity Id="EntityConfigurationGenerator.08cd4165-b5ac-4b54-b5cb-9baebef59972" Version="1.0.46" Language="en-US" Publisher="CharlesGraham" />
     <DisplayName>Entity Configuration Generator</DisplayName>
     <Description xml:space="preserve">
       Adds right-click context menu support to generate IEntityTypeConfiguration classes for your models automatically.
@@ -25,4 +25,7 @@
   <Prerequisites>
     <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" DisplayName="Visual Studio core editor" />
   </Prerequisites>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+  </Assets>
 </PackageManifest>

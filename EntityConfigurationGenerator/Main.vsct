@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable">
+    <Extern href="stdidcmd.h" />
+    <Extern href="vsshlids.h" />
+    <Include href="VSGlobals.vsct"/>
+    <Include href="Menus/RightClickMenu/RightClickMenu.vsct" />
+    <Include href="Menus/ExtensionsMenu/ExtensionsMenu.vsct" />
+   
+</CommandTable>
